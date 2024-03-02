@@ -1,12 +1,244 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
-	<meta charset="utf-8">
-	<title>Moja strona</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 100%;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab button {
+            background-color: #4e2b7f;
+            height: 70px;
+            font-family: Verdana;
+            font-size: 17px;
+            color: white;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab button:hover {
+            background-color: #390D6C;
+        }
+
+        .button1 {
+            width: 15%;
+        }
+
+        .button2 {
+            width: 18%;
+        }
+
+        .button3 {
+            width: 14%;
+        }
+
+        .button4 {
+            width: 20%;
+        }
+
+        .button5 {
+            width: 16%;
+        }
+
+        .button6 {
+            width: 8%;
+        }
+
+        .pets {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .pets img {
+            width: 230px;
+        }
+
+        .pets figcaption {
+            font-family: Verdana;
+            font-size: 16px;
+            text-align: center;
+            padding: 5px;
+            background: #b4a2ce;
+        }
+        .pet-info {
+            border: 2px solid #4e2b7f;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #b4a2ce;
+        }
+        .sm {
+            display: flex;
+            flex-wrap: wrap;
+            top: 100%;
+            height: 60px;
+            left: 0;
+            padding: 5px;
+            background-color: #4e2b7f;
+            font-family: Verdana;
+            font-size: 17px;
+            color: white;
+            margin-bottom: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+        }
+        .pet-name {
+            font-size: 20px;
+        }
+    </style>
+
+    <title>Moja strona</title>
 </head>
-<body>
+<body style="background-color: #e8e0ef">
 
-	<h1>Strona Natalii Konopki</h1>
+    <div class="tab">
+        <img src="LogoG4.png" alt="Logo G4" style="height:70px;">
+        <button class="button1">Nasi podopieczni</button>
+        <button class="button2">Zostań wolontariuszem</button>
+        <button class="button3">Nasze adopcje</button>
+        <button class="button4">O procesie adopcyjnym</button>
+        <button class="button5">Wesprzyj Paluszaki</button>
+        <button class="button6">O nas</button>
+    </div>
 
+    <div class="pets">
+        <figure class="pet-info">
+            <img src="Tanger.png" alt="Tanger">
+            <figcaption>
+                <b class="pet-name">Tanger</b><br><br>
+                Wiek: 8 lat<br>
+                Płeć: samiec<br>
+                Waga: 15 kg<br>
+                Nr: 0868/20
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Meksyk.png" alt="Meksyk">
+            <figcaption>
+                <b class="pet-name">Meksyk</b><br><br>
+                Wiek: 4 lata<br>
+                Płeć: samiec<br>
+                Waga: 19 kg<br>
+                Nr: 0029/22
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Mona.png" alt="Mona">
+            <figcaption>
+                <b class="pet-name">Mona</b><br><br>
+                Wiek: 6 lat<br>
+                Płeć: samica<br>
+                Waga: 11 kg<br>
+                Nr: 0960/23
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Frajda.jpg" alt="Frajda">
+            <figcaption>
+                <b class="pet-name">Frajda</b><br><br>
+                Wiek: 8 miesięcy<br>
+                Płeć: samica<br>
+                Waga: 9 kg<br>
+                Nr: 1735/23
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Kiwi.jpg" alt="Kiwi">
+            <figcaption>
+                <b class="pet-name">Kiwi</b><br><br>
+                Wiek: 6 lat<br>
+                Płeć: samica<br>
+                Waga: 10 kg<br>
+                Nr: 0639/21
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Muffin.png" alt="Muffin">
+            <figcaption>
+                <b class="pet-name">Muffin</b><br><br>
+                Wiek: 7 miesięcy<br>
+                Płeć: samiec<br>
+                Waga: 15 kg<br>
+                Nr: 1746/23
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Odessa.png" alt="Odessa">
+            <figcaption>
+                <b class="pet-name">Odessa</b><br><br>
+                Wiek: 5 lat<br>
+                Płeć: samica<br>
+                Waga: 8 kg<br>
+                Nr: 0443/22
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Galaktyka.png" alt="Galaktyka">
+            <figcaption>
+                <b class="pet-name">Galaktyka</b><br><br>
+                Wiek: 1 rok<br>
+                Płeć: samica<br>
+                Waga: 13 kg<br>
+                Nr: 1503/22
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Stefan.png" alt="Stefan">
+            <figcaption>
+                <b class="pet-name">Stefan</b><br><br>
+                Wiek: 2 lata<br>
+                Płeć: samiec<br>
+                Waga: 21 kg<br>
+                Nr: 0658/22
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Atom.png" alt="Atom">
+            <figcaption>
+                <b class="pet-name">Atom</b><br><br>
+                Wiek: 2 lata<br>
+                Płeć: samiec<br>
+                Waga: 21 kg<br>
+                Nr: 0120/23
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Kromka.png" alt="Kromka">
+            <figcaption>
+                <b class="pet-name">Kromka</b><br><br>
+                Wiek: 1 rok<br>
+                Płeć: samica<br>
+                Waga: 6 kg<br>
+                Nr: 0379/23
+            </figcaption>
+        </figure>
+        <figure class="pet-info">
+            <img src="Luna.png" alt="Luna">
+            <figcaption>
+                <b class="pet-name">Luna</b><br><br>
+                Wiek: 10 lat<br>
+                Płeć: samica<br>
+                Waga: 21 kg<br>
+                Nr: 1592/23
+            </figcaption>
+        </figure>
+    </div>
+    <div class="sm">
+        <img src="Instagram.png" alt="Ig" style="height:40px;">
+        <img src="Facebook.png" alt="Fb" style="height:40px;">
+        <img src="Tiktok.png" alt="Tt" style="height:40px;">
+        Odwiedź nas na naszych social mediach!
+    </div>
 </body>
 </html> 
