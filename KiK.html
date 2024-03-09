@@ -3,35 +3,22 @@
 <head>
     <meta charset="utf-8">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        .player-options {
-            margin-bottom: 20px;
-        }
-
-        .player-select {
-            padding: 5px;
-            font-size: 1em;
-        }
         .playAgain {
             display: flex;
             justify-content: center;
-            margin-top: 50px;
+            margin-top: 10px;
             color: #b16c78;
         }
 
         .startButton {
             cursor: pointer;
             padding: 10px;
+            width: 100px;
             background-color: #b16c78;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 25px;
         }
 
             .startButton:hover {
@@ -46,7 +33,6 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1em;
         }
 
             .playAgainButton:hover {
@@ -54,15 +40,14 @@
             }
 
         .board {
-            width: 450px; 
-            height: 450px; 
+            width: 350px;
+            height: 350px;
             background-color: pink;
-            margin: 0 auto;
-            margin-top: 50px;
             border: 1px solid #b16c78;
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            grid-template-rows: repeat(3, 1fr); 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            margin: 0 auto;
         }
 
         .box {
@@ -70,21 +55,21 @@
             justify-content: center;
             border: 1px solid #b16c78;
             cursor: pointer;
-            font-size: 8em;
+            font-size: 6em;
             color: #b16c78;
         }
 
-        .box:hover{
-            background: #b16c78;
-        }
+            .box:hover {
+                background: #b16c78;
+            }
 
-        #menu {
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            text-align: center;
-            margin-top: 50px;
+        .menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             color: #b16c78;
+            padding: 15px;
+            font-size: 25px;
         }
     </style>
 
@@ -93,12 +78,20 @@
 <body style="background-color: #8cc7fa">
 
     <div class="menu" id="menu">
-        <h2>Wybierz liczbę graczy:</h2>
-        <div class="player-options">
+        <h2>Wybierz opcje gry:</h2>
+        <div class="player-options" style="margin-bottom: 15px;">
             <label for="player-select">Liczba graczy:</label>
             <select id="player-select" class="player-select">
                 <option value="1">1</option>
                 <option value="2">2</option>
+            </select>
+        </div>
+        <div class="level" id="level" style="margin-bottom: 15px;">
+            <label for="lvl">Poziom trudności:</label>
+            <select id="lvl" class="lvl">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
             </select>
         </div>
         <button class="startButton" id="startButton" onclick="game()">Start</button>
@@ -119,128 +112,170 @@
     <div class="playAgain" id="playAgain">
         <button class="playAgainButton" onclick="startMenu()">Zagraj ponownie</button>
     </div>
+    <script>
+        startMenu()
+        var count;
 
-</body>
-</html>
-<script>
-    document.getElementById('playAgain').style.display = 'none';
-    document.getElementById('board').style.display = 'none';
-    var count;
+        function startMenu() {
+            document.getElementById('playAgain').style.visibility = 'hidden';
+            document.getElementById('menu').style.visibility = 'visible';
+            document.getElementById('board').style.visibility = 'hidden';
+            if (count == 2) {
+                document.getElementById('level').style.visibility = 'hidden';
+            }
+            else { document.getElementById('level').style.visibility = 'visible'; }
 
-    function startMenu() {
-        document.getElementById('playAgain').style.display = 'none';
-        document.getElementById('menu').style.display = 'grid';
-        document.getElementById('board').style.display = 'none';
-    }
-    function game() {
-        document.getElementById('playAgain').style.display = 'none';
-        document.getElementById('menu').style.display = 'none';
-        document.getElementById('board').style.display = 'grid';
-        count = document.getElementById("player-select").value;
-        board = [
-            ['', '', ''],
-            ['', '', ''],
-            ['', '', '']
-        ];
-        end = false;
-        empty = [];
-        player = 'x';
-        let boxes = document.getElementsByClassName('box');
-        for (let j = 0; j < boxes.length; j++) {
-            boxes[j].innerText = '';
-            boxes[j].setAttribute('onclick', 'move(' + Math.floor(j / 3) + ',' + j % 3 + ')');
         }
-        if (count == 1) bot(); 
-    }
-
-
-    function checkIfDraw() {
-        if (checkIfWin()) return false;
-        for (let row of board) {
-            for (let box of row) {
-                if (box === '') return false;
-            }
-        }
-        end = true;
-        return true;
-    }
-    function block() {
-        let boxes = document.getElementsByClassName('box');
-        for (let j = 0; j < boxes.length; j++) {
-            boxes[j].removeAttribute('onclick');
-        }
-    }
-    function checkIfWin() {
-        for (let i = 0; i < 3; i++) {
-            if ((board[0][i] == board[1][i] && board[1][i] == board[2][i]) && board[0][i] !== '' ||
-                (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] !== '') ||
-                (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] !== '') ||
-                (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] !== '')) {
-                end = true;
-                return true;
-            }
-        }
-        return false;
-    }
-    function move(row, column) {
-        if (board[row][column] === '') {
-            if (!end && board[row][column] === '') {
-                board[row][column] = player;
-                document.getElementsByClassName('box')[row * 3 + column].innerText = player;
-            }
-            if (checkIfDraw()) {
-                block()
-                alert('Remis!');
-                document.getElementById('playAgain').style.display = 'grid';
+        function game() {
+            document.getElementById('playAgain').style.visibility = 'hidden';
+            document.getElementById('menu').style.visibility = 'hidden';
+            document.getElementById('board').style.visibility = 'visible';
+            count = document.getElementById("player-select").value;
+            board = [
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', '']
+            ];
+            end = false;
+            empty = [];
+            player = 'x';
+            let boxes = document.getElementsByClassName('box');
+            for (let j = 0; j < boxes.length; j++) {
+                boxes[j].innerText = '';
+                boxes[j].setAttribute('onclick', 'move(' + Math.floor(j / 3) + ',' + j % 3 + ')');
             }
 
-            if (checkIfWin()) {
-                block()
-                alert('Wygrał gracz' + ' ' + player + "!");
-                document.getElementById('playAgain').style.display = 'grid';
-            }
-
-            if (player === 'x') {
-                player = 'o'
+            if (count == 1) {
+                bot();
+                document.getElementById('level').style.visibility = 'hidden';
             }
 
             else {
-                player = 'x'
+                document.getElementById('level').style.visibility = 'hidden';
             }
-            if (count == 1) bot(); 
         }
-    }
-    function bot() {
-        if (player === 'o') {
-            let empty = [];
-            for (let i = 0; i < 3; i++) {
-                for (let j = 0; j < 3; j++) {
-                    if (board[i][j] === '') {
-                        empty.push([i, j]);
-                    }
+
+        function checkIfDraw() {
+            if (checkIfWin()) return false;
+            for (let row of board) {
+                for (let box of row) {
+                    if (box === '') return false;
                 }
             }
-
-            if (empty.length > 0 && !end) {
-                let randomIndex = Math.floor(Math.random() * empty.length);
-                let [row, column] = empty[randomIndex];
-                board[row][column] = player;
-                document.getElementsByClassName('box')[row * 3 + column].innerText = player;
-
+            end = true;
+            return true;
+        }
+        function block() {
+            let boxes = document.getElementsByClassName('box');
+            for (let j = 0; j < boxes.length; j++) {
+                boxes[j].removeAttribute('onclick');
+            }
+        }
+        function checkIfWin() {
+            for (let i = 0; i < 3; i++) {
+                if ((board[0][i] == board[1][i] && board[1][i] == board[2][i]) && board[0][i] !== '' ||
+                    (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] !== '') ||
+                    (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] !== '') ||
+                    (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] !== '')) {
+                    end = true;
+                    return true;
+                }
+            }
+            return false;
+        }
+        function move(row, column) {
+            if (board[row][column] === '') {
+                if (!end && board[row][column] === '') {
+                    board[row][column] = player;
+                    document.getElementsByClassName('box')[row * 3 + column].innerText = player;
+                }
                 if (checkIfDraw()) {
-                    block();
+                    block()
                     alert('Remis!');
-                    document.getElementById('playAgain').style.display = 'grid';
+                    document.getElementById('playAgain').style.visibility = 'visible';
                 }
 
                 if (checkIfWin()) {
-                    block();
-                    alert('Wygrał gracz ' + player + "!");
-                    document.getElementById('playAgain').style.display = 'grid';
+                    block()
+                    alert('Wygrał gracz' + ' ' + player + "!");
+                    document.getElementById('playAgain').style.visibility = 'visible';
                 }
 
-                if (!end) player = 'x';
+                if (player === 'x') {
+                    player = 'o'
+                }
+
+                else {
+                    player = 'x'
+                }
+                if (count == 1) bot();
             }
         }
-    }
-</script>
+        function bot() {
+            if (player === 'o') {
+                let empty = [];
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (board[i][j] === '') {
+                            empty.push([i, j]);
+                        }
+                    }
+                }
+
+                if (empty.length > 0 && !end) {
+                    let randomIndex = Math.floor(Math.random() * empty.length);
+                    let [row, column] = chooseMove(empty);
+                    board[row][column] = player;
+                    document.getElementsByClassName('box')[row * 3 + column].innerText = player;
+
+                    if (checkIfDraw()) {
+                        block();
+                        alert('Remis!');
+                        document.getElementById('playAgain').style.visibility = 'visible';
+                    }
+
+                    if (checkIfWin()) {
+                        block();
+                        alert('Wygrał gracz ' + player + "!");
+                        document.getElementById('playAgain').style.visibility = 'visible';
+                    }
+
+                    if (!end) player = 'x';
+                }
+            }
+        }
+        function chooseMove(emptyCells) {
+            switch (document.getElementById("lvl").value) {
+                case '1':
+                    return randomMove(emptyCells);
+                case '2':
+                    return mediumMove(emptyCells);
+                case '3':
+                    return hardMove(emptyCells);
+                default:
+                    return randomMove(emptyCells);
+            }
+        }
+        function randomMove(emptyCells) {
+            let randomIndex = Math.floor(Math.random() * emptyCells.length);
+            return emptyCells[randomIndex];
+        }
+
+        function mediumMove(emptyCells) {
+            return randomMove(emptyCells);
+        }
+
+        function hardMove(emptyCells) {
+            return randomMove(emptyCells);
+        }
+
+        document.getElementById("player-select").onchange = function () {
+            if (this.value == 1) {
+                document.getElementById('level').style.visibility = 'visible';
+            } else {
+                document.getElementById('level').style.visibility = 'hidden';
+            }
+        };
+    </script>
+</body>
+</html>
