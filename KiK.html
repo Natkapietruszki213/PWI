@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .player-options {
+            margin-bottom: 20px;
+        }
+
+        .player-select {
+            padding: 5px;
+            font-size: 1em;
+        }
+        .playAgain {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            color: #b16c78;
+        }
+
+        .startButton {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #b16c78;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+            .startButton:hover {
+                background-color: #955c6d;
+            }
+
+        .playAgainButton {
+            cursor: pointer;
+            width: 200px;
+            padding: 10px;
+            background-color: #b16c78;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+            .playAgainButton:hover {
+                background-color: #955c6d;
+            }
+
+        .board {
+            width: 450px; 
+            height: 450px; 
+            background-color: pink;
+            margin: 0 auto;
+            margin-top: 50px;
+            border: 1px solid #b16c78;
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            grid-template-rows: repeat(3, 1fr); 
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            border: 1px solid #b16c78;
+            cursor: pointer;
+            font-size: 8em;
+            color: #b16c78;
+        }
+
+        .box:hover{
+            background: #b16c78;
+        }
+
+        #menu {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 50px;
+            color: #b16c78;
+        }
+    </style>
+
+    <title>Kółko i krzyżyk</title>
+</head>
+<body style="background-color: #8cc7fa">
+
+    <div class="menu" id="menu">
+        <h2>Wybierz liczbę graczy:</h2>
+        <div class="player-options">
+            <label for="player-select">Liczba graczy:</label>
+            <select id="player-select" class="player-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+        <button class="startButton" id="startButton" onclick="game()">Start</button>
+    </div>
+
+    <div class="board" id="board">
+        <div class="box" onclick="move(0,0)"></div>
+        <div class="box" onclick="move(0,1)"></div>
+        <div class="box" onclick="move(0,2)"></div>
+        <div class="box" onclick="move(1,0)"></div>
+        <div class="box" onclick="move(1,1)"></div>
+        <div class="box" onclick="move(1,2)"></div>
+        <div class="box" onclick="move(2,0)"></div>
+        <div class="box" onclick="move(2,1)"></div>
+        <div class="box" onclick="move(2,2)"></div>
+    </div>
+
+    <div class="playAgain" id="playAgain">
+        <button class="playAgainButton" onclick="startMenu()">Zagraj ponownie</button>
+    </div>
+
+</body>
+</html>
+<script>
+    document.getElementById('playAgain').style.display = 'none';
+    document.getElementById('board').style.display = 'none';
+    var count;
+
+    function startMenu() {
+        document.getElementById('playAgain').style.display = 'none';
+        document.getElementById('menu').style.display = 'grid';
+        document.getElementById('board').style.display = 'none';
+    }
+    function game() {
+        document.getElementById('playAgain').style.display = 'none';
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('board').style.display = 'grid';
+        count = document.getElementById("player-select").value;
+        board = [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ];
+        end = false;
+        empty = [];
+        player = 'x';
+        let boxes = document.getElementsByClassName('box');
+        for (let j = 0; j < boxes.length; j++) {
+            boxes[j].innerText = '';
+            boxes[j].setAttribute('onclick', 'move(' + Math.floor(j / 3) + ',' + j % 3 + ')');
+        }
+        if (count == 1) bot(); 
+    }
+
+
+    function checkIfDraw() {
+        if (checkIfWin()) return false;
+        for (let row of board) {
+            for (let box of row) {
+                if (box === '') return false;
+            }
+        }
+        end = true;
+        return true;
+    }
+    function block() {
+        let boxes = document.getElementsByClassName('box');
+        for (let j = 0; j < boxes.length; j++) {
+            boxes[j].removeAttribute('onclick');
+        }
+    }
+    function checkIfWin() {
+        for (let i = 0; i < 3; i++) {
+            if ((board[0][i] == board[1][i] && board[1][i] == board[2][i]) && board[0][i] !== '' ||
+                (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] !== '') ||
+                (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] !== '') ||
+                (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] !== '')) {
+                end = true;
+                return true;
+            }
+        }
+        return false;
+    }
+    function move(row, column) {
+        if (board[row][column] === '') {
+            if (!end && board[row][column] === '') {
+                board[row][column] = player;
+                document.getElementsByClassName('box')[row * 3 + column].innerText = player;
+            }
+            if (checkIfDraw()) {
+                block()
+                alert('Remis!');
+                document.getElementById('playAgain').style.display = 'grid';
+            }
+
+            if (checkIfWin()) {
+                block()
+                alert('Wygrał gracz' + ' ' + player + "!");
+                document.getElementById('playAgain').style.display = 'grid';
+            }
+
+            if (player === 'x') {
+                player = 'o'
+            }
+
+            else {
+                player = 'x'
+            }
+            if (count == 1) bot(); 
+        }
+    }
+    function bot() {
+        if (player === 'o') {
+            let empty = [];
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (board[i][j] === '') {
+                        empty.push([i, j]);
+                    }
+                }
+            }
+
+            if (empty.length > 0 && !end) {
+                let randomIndex = Math.floor(Math.random() * empty.length);
+                let [row, column] = empty[randomIndex];
+                board[row][column] = player;
+                document.getElementsByClassName('box')[row * 3 + column].innerText = player;
+
+                if (checkIfDraw()) {
+                    block();
+                    alert('Remis!');
+                    document.getElementById('playAgain').style.display = 'grid';
+                }
+
+                if (checkIfWin()) {
+                    block();
+                    alert('Wygrał gracz ' + player + "!");
+                    document.getElementById('playAgain').style.display = 'grid';
+                }
+
+                if (!end) player = 'x';
+            }
+        }
+    }
+</script>
