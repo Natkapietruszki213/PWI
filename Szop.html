@@ -14,7 +14,7 @@
             background-color: blanchedalmond;
             text-align: center;
             border-radius: 20px;
-            font-size: 1.5em;
+            font-size: 1.5vw; /* zmiana na vw */
             width: 45vw;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             height: 12vw;
@@ -33,6 +33,8 @@
         }
         h1{
             color: white;
+            font-size: 8vw; 
+            text-align: center;
         }
         .menu{
             display: flex;
@@ -45,7 +47,7 @@
             padding: 1.5vw;
             font-family: Verdana;
             background-color:  	#6B8E23;
-            font-size: 1.5em;
+            font-size: 1.5vw; /* zmiana na vw */
             color: white;
             transition: background-color 0.3s ease;
 
@@ -80,36 +82,40 @@
         @media screen and (max-width: 640px){
             .menu button{
                 width: 100vw;
-                font-size: 6em;
+                font-size: 6vw;
             }
             .info
             {
-                font-size: 5em;
+                font-size: 5vw;
                 padding: 1vw;
                 margin: 1vw;
                 width: 45vw;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
                 height: 50vw;
             }
+            h1 {
+                font-size: 6vw; 
+            }
         }
         @media screen and (max-width: 480px){
             .menu button{
                 width: 100vw;
-                font-size: 4vw;
+                font-size: 4vw; 
             }
             .info
             {
                 width: 100%;
-                font-size: 4em;
+                font-size: 4vw; 
                 padding: 1vw;
                 margin: 0.5vw;
                 width: 100vw;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
                 height: 50vw;
             }
+            h1 {
+                font-size: 5vw; 
+            }
         }
-       
-        
     </style>
 
     <title>Przytul szopika!</title>
@@ -122,8 +128,8 @@
         <button class="button4">Click</button>
     </div>
 
-    <img src="szop.jpg" style="width:100%;  ">
-    <h1 style="font-size:8vw; text-align: center;">Przytul szopika!</h1>
+    <img src="szop.jpg" style="width:100%;">
+    <h1>Przytul szopika!</h1>
 
     <div class="info_container">
         <div class="info">Słyną ze sprytu, odwagi i zwinnych łap. Potrafią spustoszyć pojemniki na śmieci (po uprzednim zdjęciu pokryw), 
