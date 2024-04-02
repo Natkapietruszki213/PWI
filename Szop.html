@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <style>    
         .info{
+            display: flex; 
             padding: 1vw;
             margin: 0.5vw;
             background-color: blanchedalmond;
@@ -13,11 +14,15 @@
             font-size: 1.5vw;
             width: 46vw;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 12vw;
+            justify-content: center; 
+            align-items: center;
         }
         .info_container{
             display: flex; 
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
         }
         body{
             margin: 0;
@@ -33,7 +38,6 @@
             width:100vw;
             position: sticky;
             top: 0;
-
         }
         button{
             border: none;
@@ -60,9 +64,6 @@
         .button4{
             width: 20vw;
         }
-        .img2 {
-            transition: transform 0.3s ease; 
-        } 
         .img-container {
             margin: 5vw;
             overflow: hidden; 
@@ -73,12 +74,13 @@
         }
         .img-container:hover img {
             transform: scale(1.1); 
+            transition: transform 0.3s ease; 
         }
     </style>
 
     <title>Przytul szopika!</title>
 </head>
-<body style="background-image: linear-gradient(to bottom, #c5d582, #326A3E);">
+<body style="background-image: linear-gradient(to bottom, #c5d582, #326A3E); ">
     <div class="menu">
         <button class="button1">Czy posiadanie szopa jest legalne?</button>
         <button class="button2">Występowanie</button>
@@ -93,13 +95,13 @@
         <div class="info">Słyną ze sprytu, odwagi i zwinnych łap. Potrafią spustoszyć pojemniki na śmieci (po uprzednim zdjęciu pokryw), 
             wejść przez otwarte drzwi do domu i przetrząsnąć lodówkę i spiżarnię, wyjmując jedzenie z opakowań. Są inteligentne, 
             przechowują w pamięci rozwiązania zadań nawet przez trzy lata.</div>
-
         <div class="info">Nazwa szopa pracza nawiązuje do typowego dla tego gatunku płukania pokarmu. Szopy żyjące w warunkach naturalnych 
             płuczą jedzenie, aby oczyścić je z zanieczyszczeń. Z kolei szopy w ogrodach zoologicznych najprawdopodobniej wykonują podobne 
             ruchy, symulując nawyki osobników żyjących na wolności, które niejako dziedziczą.</div>
+        <div class="info">Szopy są wszystkożerne, co oznacza, że ich dieta może obejmować owady, owoce, rośliny, jaja, a nawet małe zwierzęta.</div>
         <div class="info">Szop pracz może osiągnąć prędkość biegu nawet do około 24 km/h.</div>
 
-        <div class="info">Szopy są wszystkożerne, co oznacza, że ich dieta może obejmować owady, owoce, rośliny, jaja, a nawet małe zwierzęta.</div>
+
     </div>
     <div class="img-container">
         <img src="szop2.jpg" class="img2" style="width:40vw;">
