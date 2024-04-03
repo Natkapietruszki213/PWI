@@ -4,22 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <style>   
-    html{
-        background-image: linear-gradient(to bottom, #c5d582, #326A3E);
-    } 
+        html{
+            background-image: url('tło.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-size: cover; 
+        } 
         .info{
             display: flex; 
             padding: 1vw;
             margin: 0.5vw;
-            background-color: blanchedalmond;
+            background-color: rgba(8, 54, 31, 0.9);
             text-align: center;
             border-radius: 20px;
-            font-size: 1.5vw; /* zmiana na vw */
+            font-size: 1.5vw; 
+            border: 2px solid;
             width: 45vw;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             height: 12vw;
             justify-content: center; 
             align-items: center;
+            color: white;
         }
         .info_container{
             display: flex; 
@@ -35,37 +40,59 @@
             color: white;
             font-size: 8vw; 
             text-align: center;
+            font-family: Verdana;
         }
         .menu{
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             width:100vw;
+            border-bottom: 2px solid #ffffff;
         }
         button{
             border: none;
             padding: 1.5vw;
             font-family: Verdana;
-            background-color:  	#6B8E23;
-            font-size: 1.5vw; /* zmiana na vw */
+            background-color:  	rgba(8, 54, 31);
+            font-size: 1.5vw; 
             color: white;
             transition: background-color 0.3s ease;
 
         }
         button:hover{
-            background-color:  #008000;
+            background-color:  #006400;
         }
         .button1{
-            width: 35vw;
+            width: 30vw;
         }
         .button2{
-            width: 25vw;
+            width: 40vw;
         }
-        .button3{
-            width: 20vw;
+        .button3 {
+            width: 30vw;
         }
-        .button4{
-            width: 20vw;
+
+        .page2_container{
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .textPage2{
+            display: flex; 
+            padding: 1vw;
+            margin: 1vw;
+            background-color: rgba(8, 54, 31, 0.9);
+            text-align: center;
+            border-radius: 20px;
+            font-size: 1.5vw; 
+            border: 2px solid;
+            width: 40vw;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 25vw;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
         }
         .img-container {
             margin: 5vw;
@@ -73,11 +100,24 @@
             width: 37vw; 
             height: 37vw; 
             border-radius: 50%; 
+            border: 2px solid white;
             position: relative; 
         }
         .img-container:hover img {
             transform: scale(1.1); 
             transition: transform 0.3s ease; 
+        }
+        .meme_container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .meme_container img {
+            width: 50vw;; 
+            margin: 1vw;; 
+            border-radius: 1vw; 
         }
         @media screen and (max-width: 640px){
             .menu button{
@@ -115,36 +155,78 @@
             h1 {
                 font-size: 5vw; 
             }
+            .textPage2{
+            display: flex; 
+            padding: 1vw;
+            margin: 1vw;
+            background-color: rgba(8, 54, 31, 0.9);
+            text-align: center;
+            border-radius: 20px;
+            font-size: 1.5vw; 
+            border: 2px solid;
+            width: 80vw;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 25vw;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            }
         }
     </style>
 
     <title>Przytul szopika!</title>
 </head>
 <body>
+
     <div class="menu">
-        <button class="button1">Czy posiadanie szopa jest legalne?</button>
-        <button class="button2">Występowanie</button>
-        <button class="button3">Memy</button>
-        <button class="button4">Click</button>
+        <button class="button1" onclick="switchTabs('MainPage')">Strona główna</button>
+        <button class="button2" onclick="switchTabs('SecondPage')">Czy posiadanie szopa jest legalne?</button>
+        <button class="button3" onclick="switchTabs('Meme')">Memy</button>
     </div>
+    <div id="MainPage">
+        <img src="szop.jpg" style="width:100%; border-bottom: 2px solid #ffffff;">
+        <h1>Przytul szopika!</h1>
 
-    <img src="szop.jpg" style="width:100%;">
-    <h1>Przytul szopika!</h1>
-
-    <div class="info_container">
-        <div class="info">Słyną ze sprytu, odwagi i zwinnych łap. Potrafią spustoszyć pojemniki na śmieci, 
-            wejść przez otwarte drzwi do domu i przetrząsnąć lodówkę i spiżarnię, wyjmując jedzenie z opakowań. Są inteligentne, 
-            przechowują w pamięci rozwiązania zadań nawet przez trzy lata.</div>
-        <div class="info">Szopy żyjące w warunkach naturalnych płuczą jedzenie, aby oczyścić je z zanieczyszczeń. 
-            Z kolei szopy w ogrodach zoologicznych najprawdopodobniej wykonują podobne 
-            ruchy, symulując nawyki osobników żyjących na wolności, które niejako dziedziczą.</div>
-        <div class="info">Szopy są wszystkożerne, co oznacza, że ich dieta może obejmować owady, owoce, rośliny, jaja, a nawet małe zwierzęta. Ich ogon służy jako narzędzie do utrzymania równowagi oraz jako narzędzie do komunikacji między sobą. </div>
-        <div class="info">Szop pracz może osiągnąć prędkość biegu nawet do około 24 km/h. Ich maska na twarzy pomaga im w widzeniu w ciemnościach oraz w rozpoznawaniu zapachów. </div>
+        <div class="info_container">
+            <div class="info">Słyną ze sprytu, odwagi i zwinnych łap. Potrafią spustoszyć pojemniki na śmieci, 
+                wejść przez otwarte drzwi do domu i przetrząsnąć lodówkę i spiżarnię, wyjmując jedzenie z opakowań. Są inteligentne, 
+                przechowują w pamięci rozwiązania zadań nawet przez trzy lata.</div>
+            <div class="info">Szopy żyjące w warunkach naturalnych płuczą jedzenie, aby oczyścić je z zanieczyszczeń. 
+                Z kolei szopy w ogrodach zoologicznych najprawdopodobniej wykonują podobne 
+                ruchy, symulując nawyki osobników żyjących na wolności, które niejako dziedziczą.</div>
+            <div class="info">Szopy są wszystkożerne, co oznacza, że ich dieta może obejmować owady, owoce, rośliny, jaja, a nawet małe zwierzęta. Ich ogon służy jako narzędzie do utrzymania równowagi oraz jako narzędzie do komunikacji między sobą. </div>
+            <div class="info">Szop pracz może osiągnąć prędkość biegu nawet do około 24 km/h. Ich maska na twarzy pomaga im w widzeniu w ciemnościach oraz w rozpoznawaniu zapachów. </div>
+        </div>
     </div>
-    <div class="img-container">
-        <img src="szop2.jpg" class="img2" style="width:40vw;">
+    <div id="SecondPage" style="display: none;">
+        <div class="page2_container">
+            <div class="img-container">
+                <img src="szop2.jpg" class="img2" style="width:40vw;">
+            </div>
+            <div class="textPage2">
+                Dobra wiadomość jest taka, że hodowla szopa pracza w Polsce jest jak najbardziej legalna. Zła z kolei to ta, 
+                że na jej założenie trzeba mieć specjalne zezwolenie. Zwierzak został zakwalifikowany jako gatunek inwazyjny, 
+                w dodatku wypierający rodzime gatunki. Choć miłośnikom tego pociesznego futrzaka z wydłużonym pyszczkiem trudno 
+                w to uwierzyć, szop pracz w Polsce nie jest objęty ochroną. To zrozumiałe, że w tej sytuacji władze chcą mieć 
+                kontrolę nad rozprzestrzenianiem się, tym samym wprowadzając ograniczenia na prywatnych posiadaczy tych zwierząt, 
+                aby uniemożliwiać przedostawanie się osobników z hodowli do naturalnego ekosystemu.
+            </div>
+        </div>
+    </div>
+    <div id="Meme" style="display: none;">
+        <div class="meme_container">
+            <img src="1.jpg">
+            <img src="2.jpg">
+            <img src="3.jpg">
+        </div>
     </div>
     <script>
+        function switchTabs(tab) {
+            document.getElementById('MainPage').style.display='none';
+            document.getElementById('SecondPage').style.display='none';
+            document.getElementById('Meme').style.display='none';
+            document.getElementById(tab).style.display='block';
+        }
     </script>
 </body>
 </html>
