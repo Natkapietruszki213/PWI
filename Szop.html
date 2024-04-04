@@ -109,31 +109,47 @@
             transform: scale(1.1); 
             transition: transform 0.3s ease; 
         }
-        .meme_gallery {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .meme_container {
-            display: inline-block;
-        }
         .meme_container img {
+            margin: 2vw;
             width: 35vw;
+            height: 35vw;
             max-width: 100%;
             border-radius: 20px;
             border: 2px solid white;
         }
-        .prev_button {
-            position: absolute;
-            top:50%;
-            left: 1vw;
+        .meme_container {
+            display: inline-block;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
         }
+
+.meme_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+        .prev_button,
         .next_button {
-            position: absolute;
-            top:50%;
-            right: 1vw;
+            width: 10vw;
+            margin: 0.5vw;
+            border: none;
+            padding: 1.5vw;
+            font-family: Verdana;
+            background-color: rgba(8, 54, 31);
+            font-size: 1.5vw;
+            color: white;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            margin-top: 10px; 
         }
+
+.prev_button:hover,
+.next_button:hover {
+    background-color: #006400;
+}
         @media screen and (max-width: 640px){
             .menu button{
                 width: 100vw;
@@ -156,17 +172,7 @@
                 max-width: 100%;
                 border-radius: 20px;
                 border: 2px solid white;
-            }
-            .prev_button {
-                position: absolute;
-                top:60%;
-                left: 1vw;
-            }
-            .next_button {
-                position: absolute;
-                top:60%;
-                right: 1vw;
-            }
+        }
         @media screen and (max-width: 480px){
             .menu button{
                 width: 100vw;
@@ -207,16 +213,7 @@
                 border-radius: 20px;
                 border: 2px solid white;
             }
-            .prev_button {
-            position: absolute;
-            top:60%;
-            left: 1vw;
-            }
-            .next_button {
-                position: absolute;
-                top:60%;
-                right: 1vw;
-            }
+
     </style>
 
     <title>Przytul szopika!</title>
@@ -259,7 +256,6 @@
         </div>
     </div>
     <div id="Meme" style="display: none;">
-        <div class="meme_gallery">
             <div class="meme_container">
                 <img src="1.jpg" alt="Mem">
                 <img src="2.jpg" alt="Mem">
@@ -272,9 +268,10 @@
                 <img src="9.jpg" alt="Mem">
                 <img src="10.jpg" alt="Mem">
             </div> 
+            <div class="meme_buttons">
                 <button class="prev_button" onclick="prevMeme()">Poprzedni</button>
                 <button class="next_button" onclick="nextMeme()">Następny</button>
-        </div>
+            </div>
     </div>
     <script>
         function switchTabs(tab) {
