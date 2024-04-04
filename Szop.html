@@ -57,6 +57,7 @@
             font-size: 1.5vw; 
             color: white;
             transition: background-color 0.3s ease;
+            cursor: pointer;
 
         }
         button:hover{
@@ -107,17 +108,29 @@
             transform: scale(1.1); 
             transition: transform 0.3s ease; 
         }
-        .meme_container {
+        .meme_gallery {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-
+        .meme_container {
+            display: inline-block;
+        }
         .meme_container img {
-            width: 50vw;; 
-            margin: 1vw;; 
-            border-radius: 1vw; 
+            max-width: 100%;
+            border-radius: 20px;
+            border: 2px solid white;
+        }
+        .prev_button {
+            position: absolute;
+            top:50%;
+            left: 1vw;
+        }
+        .next_button {
+            position: absolute;
+            top:50%;
+            right: 1vw;
         }
         @media screen and (max-width: 640px){
             .menu button{
@@ -214,10 +227,21 @@
         </div>
     </div>
     <div id="Meme" style="display: none;">
-        <div class="meme_container">
-            <img src="1.jpg">
-            <img src="2.jpg">
-            <img src="3.jpg">
+        <div class="meme_gallery">
+            <div class="meme_container">
+                <img src="1.jpg">
+                <img src="2.jpg">
+                <img src="3.jpg">
+                <img src="4.jpg">
+                <img src="5.jpg">
+                <img src="6.jpg">
+                <img src="7.jpg">
+                <img src="8.jpg">
+                <img src="9.jpg">
+                <img src="10.jpg">
+            </div> 
+                <button class="prev_button" onclick="prevMeme()">Poprzedni</button>
+                <button class="next_button" onclick="nextMeme()">Następny</button>
         </div>
     </div>
     <script>
@@ -227,6 +251,26 @@
             document.getElementById('Meme').style.display='none';
             document.getElementById(tab).style.display='block';
         }
+        let currentMemeIndex = 0;
+        const memeImages = document.querySelectorAll('.meme_container img');
+
+        function showMeme(index) {
+            memeImages.forEach((img, i) => {
+                img.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        function prevMeme() {
+            currentMemeIndex = (currentMemeIndex - 1 + memeImages.length) % memeImages.length;
+            showMeme(currentMemeIndex);
+        }
+
+        function nextMeme() {
+            currentMemeIndex = (currentMemeIndex + 1) % memeImages.length;
+            showMeme(currentMemeIndex);
+        }
+
+        showMeme(currentMemeIndex);
     </script>
 </body>
 </html>
