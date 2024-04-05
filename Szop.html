@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <style>   
-        html{
+        html {
             background-image: url('tło.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed; 
             background-size: cover; 
         } 
-        .info{
+        .info {
             display: flex; 
             padding: 1vw;
             margin: 0.5vw;
@@ -26,31 +26,31 @@
             align-items: center;
             color: white;
         }
-        .info_container{
+        .info_container {
             display: flex; 
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
         }
-        body{
+        body {
             margin: 0;
             font-family: Verdana;
             overflow-x: hidden;
         }
-        h1{
+        h1 {
             color: white;
             font-size: 8vw; 
             text-align: center;
             font-family: Verdana;
         }
-        .menu{
+        .menu {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             width:100vw;
             border-bottom: 2px solid #ffffff;
         }
-        button{
+        button {
             border: none;
             padding: 1.5vw;
             font-family: Verdana;
@@ -59,28 +59,26 @@
             color: white;
             transition: background-color 0.3s ease;
             cursor: pointer;
-
         }
-        button:hover{
+        button:hover {
             background-color:  #006400;
         }
-        .button1{
+        .button1 {
             width: 30vw;
         }
-        .button2{
+        .button2 {
             width: 40vw;
         }
         .button3 {
             width: 30vw;
         }
-
-        .page2_container{
+        .page2_container {
             display: flex; 
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
         }
-        .textPage2{
+        .textPage2 {
             display: flex; 
             padding: 1vw;
             margin: 1vw;
@@ -89,7 +87,7 @@
             border-radius: 20px;
             font-size: 2vw; 
             border: 2px solid;
-            width: 42w;
+            width: 42vw;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             height: 30vw;
             justify-content: space-between;
@@ -124,7 +122,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .meme_buttons {
             display: flex;
             justify-content: center;
@@ -144,11 +141,10 @@
             transition: background-color 0.3s ease;
             cursor: pointer;
         }
-
-.prev_button:hover,
-.next_button:hover {
-    background-color: #006400;
-}
+        .prev_button:hover,
+        .next_button:hover {
+            background-color: #006400;
+        }
         @media screen and (max-width: 640px){
             .menu button{
                 width: 100vw;
@@ -186,6 +182,7 @@
                 transition: background-color 0.3s ease;
                 cursor: pointer;
             }
+        }
         @media screen and (max-width: 480px){
             .menu button{
                 width: 100vw;
@@ -240,18 +237,17 @@
                 transition: background-color 0.3s ease;
                 cursor: pointer;
             }
-
-    </style>
-
+        }
+        </style>
     <title>Przytul szopika!</title>
 </head>
 <body>
-
     <div class="menu">
         <button class="button1" onclick="switchTabs('MainPage')">Strona główna</button>
         <button class="button2" onclick="switchTabs('SecondPage')">Czy posiadanie szopa jest legalne?</button>
         <button class="button3" onclick="switchTabs('Meme')">Memy</button>
     </div>
+
     <div id="MainPage">
         <img src="szop.jpg" alt="Szop" style="width:100%; border-bottom: 2px solid #ffffff;">
         <h1>Przytul szopika!</h1>
@@ -267,6 +263,7 @@
             <div class="info">Szop pracz może osiągnąć prędkość biegu nawet do około 24 km/h. Ich maska na twarzy pomaga im w widzeniu w ciemnościach oraz w rozpoznawaniu zapachów. </div>
         </div>
     </div>
+
     <div id="SecondPage" style="display: none;">
         <div class="page2_container">
             <div class="img-container">
@@ -283,7 +280,7 @@
         </div>
     </div>
     <div id="Meme" style="display: none;">
-            <div class="meme_container">
+        <div class="meme_container">
                 <img src="1.jpg" alt="Mem">
                 <img src="2.jpg" alt="Mem">
                 <img src="3.jpg" alt="Mem">
@@ -292,13 +289,11 @@
                 <img src="6.jpg" alt="Mem">
                 <img src="7.jpg" alt="Mem">
                 <img src="8.jpg" alt="Mem">
-                <img src="9.jpg" alt="Mem">
-                <img src="10.jpg" alt="Mem">
-            </div> 
-            <div class="meme_buttons">
-                <button class="prev_button" onclick="prevMeme()">Poprzedni</button>
-                <button class="next_button" onclick="nextMeme()">Następny</button>
-            </div>
+        </div> 
+        <div class="meme_buttons">
+            <button class="prev_button" onclick="prevMeme()">Poprzedni</button>
+            <button class="next_button" onclick="nextMeme()">Następny</button>
+        </div>
     </div>
     <script>
         function switchTabs(tab) {
@@ -307,6 +302,7 @@
             document.getElementById('Meme').style.display='none';
             document.getElementById(tab).style.display='block';
         }
+
         let currentMemeIndex = 0;
         const memeImages = document.querySelectorAll('.meme_container img');
 
