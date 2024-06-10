@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Taylor Swift</title>
+    <style>
+        body{
+            margin:0;
+            font-family: Roboto;
+        }
+        .top img{
+            width:100vw;
+            opacity: 0.3;
+        }
+        .top h1{
+            color: white;
+            font-size: 14rem;
+            position: absolute; 
+            margin-left:13vw;
+            bottom:-4vw;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            opacity: 0.8;
+        }
+        .top{
+            position: relative;
+            margin:0;
+            background-color: black;
+        }
+        .page{
+            margin:0;
+            display: flex;
+            flex-direction: row;
+        }
+        .albums {
+            margin:2vw;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .albums img{
+            height: 15vw;
+            width: 15vw;
+            margin: 1vw;
+            border-radius: 20px;
+        }
+        .album{
+            position: relative;
+            display: flex;
+            flex-direction: row;
+        }
+        .menu {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            width: 20vw;
+            display: flex;
+            flex-direction: column;
+        }
+        .menu button {
+            color: rgb(50, 61, 78); 
+            background-color: transparent; 
+            border-bottom:  1px solid;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding: 20px;
+            text-align: left; 
+            width: 100%;
+            transition: background-color 0.3s, color 0.3s; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+        }
+        .menu button:hover {
+            background-color: #a2adec 
+        }
+        .menu button:focus {
+            outline: none; 
+            background-color: #8e9add; 
+            border-left: 4px solid #6b68c9;
+        }
+        .title {
+            display: flex;
+            position: absolute;
+            width: 15vw;
+            height: 15vw;
+            background-color: rgba(0, 0, 0, 0.7); 
+            color: white;
+            font-size: 1.5rem; 
+            font-style: italic;
+            text-align: center;
+            justify-content: center;
+            opacity: 0;
+            margin: 1vw;
+            transition: opacity 0.5s ease-in-out;
+            border-radius: 20px;
+        }
+
+        .album:hover .title {
+            opacity: 1; 
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <img src="tay6.jpg">
+        <h1>Taylor Swift</h1>
+    </div>
+    <div class="page">
+        <div class="menu">
+                <button onclick="showSection('home')">Strona Główna</button>
+                <button onclick="showSection('biography')">Biografia</button>
+                <button onclick="showSection('music')">Twórczość</button>
+                <button onclick="showSection('awards')">Nagrody</button>
+        </div>
+        <div class="albums">
+            <div class="album">
+                <img src="ttpd.jpg">
+                <div class="title">The Tortured Poets Department</div>
+            </div>
+            <div class="album">
+                <img src="midnights.jpg">
+                <div class="title">Midnights</div>
+            </div>
+            <div class="album">
+                <img src="evermore.jpg">
+                <div class="title">Evermore</div>
+            </div>
+            <div class="album">
+                <img src="folklore.jpg">
+                <div class="title">Folklore</div>
+            </div>
+            <div class="album">
+                <img src="1989.jpg">
+                <div class="title">1989</div>
+            </div>
+            <div class="album">
+                <img src="lover.jpg">
+                <div class="title">Lover</div>
+            </div>
+            <div class="album">
+                <img src="reputation.jpg">
+                <div class="title">Reputation</div>
+            </div>
+            <div class="album">
+                <img src="red.jpg">
+                <div class="title">Red</div>
+            </div>
+            <div class="album">
+                <img src="speaknow.jpg">
+                <div class="title">Speak Now</div>
+            </div>
+            <div class="album">
+                <img src="fearless.jpg">
+                <div class="title">Fearless</div>
+            </div>
+        </div>
+    </div>   
+</body>
+</html>
+
